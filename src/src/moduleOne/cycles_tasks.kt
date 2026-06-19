@@ -48,7 +48,7 @@ fun counter(){
         if (i % 5 == 0){
             println("--- пятёрка ---")
         }
-        }
+    }
 }
 
 val sentence = "kotlin is fun"
