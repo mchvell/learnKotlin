@@ -49,7 +49,7 @@ fun counter(){
             println("--- пятёрка ---")
         }
         }
-    }
+}
 
 val sentence = "kotlin is fun"
 
