@@ -119,6 +119,74 @@ transform
 
 fun transformToUpperCase(s: String, operate: (String) -> String): String = operate(s)
 
+/*
+Задание 11
+combine
+Принимает: две строки (String, String) и операцию (String, String) -> String
+Делает: применяет операцию к двум строкам
+Возвращает: String
+Вызови с операцией "склеить через пробел"
+ */
+
+fun combine(x: String, y: String, op: (String, String) -> String): String = op(x,y)
+
+/*
+Задание 12
+applyTwice
+Принимает: число (Int) и операцию (Int) -> Int
+Делает: применяет операцию к числу дважды (результат первого применения подаёт во второе)
+Возвращает: Int
+Вызови с операцией "+3" — для 10 должно получиться 16 (10→13→16)
+ */
+
+fun applyTwice(x: Int, op: (Int) -> Int) : Int = op(op(x))
+
+
+/*
+Задание 13
+countMatching
+Принимает: список List<Int> и условие (Int) -> Boolean
+Делает: считает сколько элементов удовлетворяют условию
+Возвращает: Int (количество)
+Вызови с проверкой "чётное"
+ */
+
+fun countMatching(x: List<Int>, op: (Int) -> Boolean) : Int {
+    var count = 0
+    for (i in x) {
+        if (op(i)) count++
+    }
+    return count
+}
+
+/*
+Задание 14
+firstOrZero
+Принимает: список List<Int> и условие (Int) -> Boolean
+Делает: возвращает первый элемент подходящий под условие, или 0 если такого нет
+Возвращает: Int
+Вызови с проверкой "больше 100"
+ */
+
+
+fun firstOrZero(x: List<Int>, op: (Int) -> Boolean): Int {
+    for (i in x) {
+        if (op(i)) return i
+    }
+    return 0
+}
+
+/*
+Задание 15
+describe
+Принимает: число (Int) и функцию (Int) -> String
+Делает: применяет функцию к числу
+Возвращает: String
+Вызови с операцией которая возвращает "чётное"/"нечётное" в зависимости от числа
+ */
+
+fun describe(x: Int, op: (Int) -> String): String = op(x)
+
 fun main(){
     val add = operate(3,4) { x, y -> x + y }
     println(add)
@@ -152,4 +220,19 @@ fun main(){
 
     val transformation = transformToUpperCase("string") {it.uppercase()}
     println(transformation)
+
+    val addStrings = combine("Hello", "World") {x, y -> "$x $y!"}
+    println(addStrings)
+
+    val addThree = applyTwice(10){it + 3}
+    println(addThree)
+
+    val numberOfEvens = countMatching(listOf(1,2,3,4,5, 6)) {it % 2 == 0}
+    println(numberOfEvens)
+
+    val higherThan = firstOrZero(listOf(1,2,3,4,99, 6)){it > 100}
+    println(higherThan)
+
+    val isEvenNumber = describe(7){if (it % 2 == 0) "четное" else "не четное"}
+    println(isEvenNumber)
 }
