@@ -1,4 +1,5 @@
 package moduleTwo
+import moduleThree.Timer
 
 /*
 1. makeBudgetGuard
