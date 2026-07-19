@@ -14,21 +14,21 @@ import jdk.javadoc.internal.doclets.toolkit.taglets.snippet.Style
 Контроль: 1000 → 1150 → 920. ВАЖНО: предскажи оба числа ДО запуска.
 */
 
-open class PriceModifierNew(val name: String){
+open class PriceModifierNNew(val name: String){
     init {
         require(name.isNotBlank()) {"Название модификатора не может быть пустым, $name"}
     }
     open fun apply(price: Int) = price
 }
 
-class MarkupModifierNew(val percent: Int): PriceModifierNew("Наценка"){
+class MarkupModifierNNew(val percent: Int): PriceModifierNew("Наценка"){
     init {
         require(percent in 0..100){"Наценка должна быть в диапозоне 0-100, $percent"}
     }
     override fun apply(price: Int) = price + price * percent / 100
 }
 
-class DiscountModifier(val percent: Int): PriceModifierNew("Скидка"){
+class DiscountModifierNew(val percent: Int): PriceModifierNew("Скидка"){
     init {
         require(percent in 0..100){"Скидка должна быть в диапозоне 0-100, $percent"}
     }
