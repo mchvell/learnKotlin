@@ -31,7 +31,7 @@ fun parseStatus(raw: String?): OrderStatus? {
     }
 }
 
-fun labelOrDefault(raw: String?): String = parseStatus(raw)?.label ?: "неизвестен"
+fun labelOrDefaultF(raw: String?): String = parseStatus(raw)?.label ?: "неизвестен"
 
 
 enum class Priority(val label: String) {
@@ -56,10 +56,5 @@ fun parse(raw: String): Priority? = when(raw.trim()) {
     else -> null
 }
 
-fun labelOrDefault(raw: String): String = parse(raw)?.label ?: "не известно"
+fun labelOrDefaultR(raw: String): String = parse(raw)?.label ?: "не известно"
 
-fun main() {
-    //println(statusMessage(OrderStatus.NEW))
-
-    println(isUrgent(Priority.LOW))
-}
