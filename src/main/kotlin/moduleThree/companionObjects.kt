@@ -181,7 +181,3 @@ enum class LogLevel(val label: String, val weight: Int) {
 
 }
 
-fun main() {
-    val x = LogLevel.DEBUG.isAtLeast(LogLevel.WARN)
-    println(x)
-}
