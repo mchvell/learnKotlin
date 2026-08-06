@@ -1,0 +1,4 @@
+package mockServer
+
+class HttpMethod {
+}
