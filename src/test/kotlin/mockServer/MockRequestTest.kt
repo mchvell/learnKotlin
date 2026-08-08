@@ -44,7 +44,7 @@ class MockRequestTest {
     fun requestWithBody() {
 
         val result = MockRequest(HttpMethod.POST, "/postpaid", """{"key":"value"}"""").body
-        assertEquals("""{"key":"value"}""", result)
+        assertEquals("""{"key":"value"}"""", result)
     }
 
     @Test
