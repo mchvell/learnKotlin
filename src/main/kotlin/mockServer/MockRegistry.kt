@@ -10,14 +10,8 @@ class MockRegistry {
     val rulesCount: Int
         get() = rules.size
 
-    fun findResponse(request: MockRequest): MockResponse? {
-        for (rule in rules) {
-            if (rule.matches(request)) {
-                return rule.response
-            }
-        }
-        return null
-    }
+    fun findResponse(request: MockRequest): MockResponse? = rules.find { it.matches(request) }?.response
+
 
     fun respondTo(request: MockRequest): MockResponse = findResponse(request) ?: MockResponse.NOT_FOUND
 
