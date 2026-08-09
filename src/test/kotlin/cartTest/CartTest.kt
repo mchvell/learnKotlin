@@ -109,13 +109,27 @@ class CartTest {
         assertEquals(ring, cart.mostExpensiveItem())
     }
 
-    @Test // понять как объявить Map<String, List<CartItem>>
+    @Test
     fun itemsByCategoryMatches() {
         val items = mutableListOf(watch, coffee).apply { this.add(wine) }
         val cart = Cart(items)
+        val expected = mapOf(
+            "Украшения" to listOf(watch),
+            "Кофе и чай" to listOf(coffee),
+            "Алкогольные напитки" to listOf(wine)
+        )
+        assertEquals(expected, cart.itemsByCategory)
     }
 
-    // TODO spentByCategory test
+    @Test
+    fun spentByCategoryEqual() {
+        val items = mutableListOf(watch, ball).apply { this.add(coffee) }
+        val cart = Cart(items)
+         val expected = mapOf("Украшения" to  25000000,
+             "Спортивный инвентарь" to 1500000,
+             "Кофе и чай" to 49900)
+        assertEquals(expected, cart.spentByCategory)
+    }
 
     @Test
     fun promoCodesList() {
