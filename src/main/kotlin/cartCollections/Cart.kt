@@ -44,4 +44,3 @@ class Cart(private val cartList: List<CartItem>) {
 
     fun priceOf(name: String): Int = cartList.find { it.name == name }?.run{this.priceKopecks * this.quantity} ?: 0
 }
-
